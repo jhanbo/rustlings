@@ -1,7 +1,6 @@
 // iterators4.rs
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 pub fn factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
@@ -13,6 +12,17 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+
+    if num < 0{
+        panic!("There is no factorial of a negative number");
+    }
+    let v: Vec<u64> = (1..num+1).collect();
+    v.iter().for_each(|a| println!("{}", a));
+    let result: Option<u64> = v.into_iter().reduce(|a,b| {a * b});
+    match result {
+        Some(r) => r,
+        None => 1
+    }
 }
 
 #[cfg(test)]
@@ -38,3 +48,5 @@ mod tests {
         assert_eq!(24, factorial(4));
     }
 }
+
+ 
